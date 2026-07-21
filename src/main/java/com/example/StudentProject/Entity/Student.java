@@ -15,6 +15,15 @@ public class Student{
     private int age;
     private int rollNo;
     private String course;
+    private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public String getName() {
         return name;
