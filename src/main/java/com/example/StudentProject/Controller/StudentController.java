@@ -24,8 +24,8 @@ public class StudentController {
         return createdStudent.getAge();
     }
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable Long id){
+    @GetMapping("/get")
+    public ResponseEntity<Student> getStudent(@RequestParam Long id){
         Student studentResp = studentService.getStudent(id);
 
         if(studentResp==null){
@@ -34,7 +34,7 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Student>> getAllStudent(){
         List<Student> StudentList = studentService.getAllStudent();
 
@@ -44,8 +44,8 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(StudentList);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable Long id,
+    @PutMapping("/update")
+    public ResponseEntity<Student> updateStudent(@RequestParam Long id,
                                                  @RequestBody Student student){
 
         Student studentResp = studentService.update(id,student);
@@ -55,8 +55,8 @@ public class StudentController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
     }
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<Boolean> deleteStudent(@PathVariable Long id){
+    @DeleteMapping("delete")
+    public ResponseEntity<Boolean> deleteStudent(@RequestParam Long id){
         boolean isDeleted = studentService.deleteStudent(id);
 
         if(!isDeleted){
@@ -65,8 +65,8 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PatchMapping("/delete-soft/{id}")
-    public ResponseEntity<Boolean> deleteStudentSoftly(@PathVariable Long  id){
+    @PatchMapping("/delete-soft")
+    public ResponseEntity<Boolean> deleteStudentSoftly(@RequestParam Long  id){
         boolean isDeleted = studentService.deleteStudentSoftly(id);
         if(!isDeleted){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
