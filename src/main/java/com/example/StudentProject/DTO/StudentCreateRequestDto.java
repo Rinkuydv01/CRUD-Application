@@ -1,10 +1,19 @@
 package com.example.StudentProject.DTO;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class StudentCreateRequestDto {
+    @NotBlank
     private String name;
+    @Email
     private String email;
+
     private int rollNo;
     private String course;
+    @Min(value  = 18)
     private int age;
 
     public String getName() {
