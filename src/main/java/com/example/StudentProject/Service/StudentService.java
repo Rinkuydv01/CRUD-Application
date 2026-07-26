@@ -1,9 +1,12 @@
 package com.example.StudentProject.Service;
 
+import com.example.StudentProject.DTO.StudentCreateRequestDto;
+import com.example.StudentProject.DTO.StudentCreateResponseDto;
 import com.example.StudentProject.Entity.Student;
 import com.example.StudentProject.Repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +18,41 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public Student createStudent(Student studentReq){
-        studentReq.setDeleted(false);
-        Student studentResp = studentRepository.save(studentReq);
+    public StudentCreateResponseDto createStudent(StudentCreateRequestDto reqDto){
+        Student student = mapCreateStudentRequestDtoToEntity(reqDto);
+        Student studentResponse = studentRepository.save(student);
 
-        return studentResp;
+        StudentCreateResponseDto responseDto = mapToCreateStudentResponseDto(studentResponse);
+        return responseDto;
+    }
+
+    private StudentCreateResponseDto mapToCreateStudentResponseDto(Student student) {
+        StudentCreateResponseDto responseDto = new StudentCreateResponseDto();
+
+        responseDto.setId(student.getId());
+        responseDto.setName(student.getName());
+        responseDto.setAge(student.getAge());
+        responseDto.setEmail(student.getEmail());
+        responseDto.setRollNo(student.getRollNo());
+        responseDto.setCourse(student.getCourse());
+        responseDto.setCreatedAt(student.getCreatedAt());
+
+        return responseDto;
+    }
+
+    private Student mapCreateStudentRequestDtoToEntity(StudentCreateRequestDto reqDto) {
+        Student student = new Student();
+        student.setDeleted(false);
+
+        student.setName(reqDto.getName());
+        student.setEmail(reqDto.getEmail());
+        student.setAge(reqDto.getAge());
+        student.setCourse(reqDto.getCourse());
+        student.setRollNo(reqDto.getRollNo());
+        student.setCreatedAt(LocalDateTime.now());
+        student.setUpdatedAt(LocalDateTime.now());
+
+        return student;
     }
 
     public Student getStudent(Long id){

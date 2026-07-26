@@ -1,5 +1,7 @@
 package com.example.StudentProject.Controller;
 
+import com.example.StudentProject.DTO.StudentCreateRequestDto;
+import com.example.StudentProject.DTO.StudentCreateResponseDto;
 import com.example.StudentProject.Entity.Student;
 import com.example.StudentProject.Service.StudentService;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,10 @@ public class StudentController {
         this.studentService = studentService;
     }
     @PostMapping("/create")
-    public int createStudent(@RequestBody Student student){
-        Student createdStudent = studentService.createStudent(student);
+    public ResponseEntity<StudentCreateResponseDto> createStudent(@RequestBody StudentCreateRequestDto requestDto){
+        StudentCreateResponseDto responseDto = studentService.createStudent(requestDto);
 
-        return createdStudent.getAge();
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
     @GetMapping("/get")
