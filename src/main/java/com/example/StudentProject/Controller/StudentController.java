@@ -49,7 +49,7 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(StudentList);
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public ResponseEntity<StudentUpdateResponseDto> updateStudent(@RequestParam Long id,
                                                                   @RequestBody StudentUpdateRequestDto student){
 
@@ -60,7 +60,7 @@ public class StudentController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
     }
-    @DeleteMapping("delete")
+    @DeleteMapping
     public ResponseEntity<Boolean> deleteStudent(@RequestParam Long id){
         boolean isDeleted = studentService.deleteStudent(id);
 
