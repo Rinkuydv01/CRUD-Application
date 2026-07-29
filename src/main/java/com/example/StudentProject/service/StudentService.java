@@ -67,23 +67,22 @@ public class StudentService {
     }
 
 
-    public boolean deleteStudent(Long id){
+    public void deleteStudent(Long id){
         if(!studentRepository.existsById(id)){
             throw new ResourceNotFoundException("Student with id-" + id + " not found");
         }
 
         studentRepository.deleteById(id);
-        return true;
+
     }
 
-    public boolean deleteStudentSoftly(Long id){
+    public void deleteStudentSoftly(Long id){
         Student existingRecord = studentRepository
                 .findByIdAndDeletedIsFalse(id)
                 .orElseThrow(()->new ResourceNotFoundException("Student with id-" + id + " not found"));
 
         existingRecord.setDeleted(true);
         studentRepository.save(existingRecord);
-        return true;
 
     }
     private StudentCreateResponseDto mapToCreateStudentResponseDto(Student student) {
