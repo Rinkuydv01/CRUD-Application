@@ -1,8 +1,12 @@
 package com.example.StudentProject.DTO;
 
+
+import jakarta.validation.constraints.*;
+
 public class StudentUpdateRequestDto {
     private int rollNo;
     private String course;
+    @Min(value = 18)
     private int age;
 
     public int getRollNo() {

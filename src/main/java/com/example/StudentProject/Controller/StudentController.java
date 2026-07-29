@@ -32,20 +32,12 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<StudentCreateResponseDto> getStudent(@PathVariable Long id){
         StudentCreateResponseDto studentResp = studentService.getStudent(id);
-
-        if(studentResp==null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
     }
 
     @GetMapping
     public ResponseEntity<List<StudentCreateResponseDto>> getAllStudent(){
         List<StudentCreateResponseDto> StudentList = studentService.getAllStudent();
-
-        if(StudentList==null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
         return ResponseEntity.status(HttpStatus.OK).body(StudentList);
     }
 
@@ -54,10 +46,6 @@ public class StudentController {
                                                                   @RequestBody StudentUpdateRequestDto student){
 
         StudentUpdateResponseDto studentResp = studentService.update(id,student);
-
-        if(studentResp==null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
     }
     @DeleteMapping
