@@ -1,32 +1,19 @@
-package com.example.StudentProject.DTO;
+package com.example.StudentProject.dto;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
-public class StudentCreateResponseDto {
-    private Long id;
+public class StudentCreateRequestDto {
+    @NotBlank
     private String name;
+    @Email
     private String email;
+
     private int rollNo;
     private String course;
+    @Min(value  = 18)
     private int age;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -58,14 +45,6 @@ public class StudentCreateResponseDto {
 
     public void setCourse(String course) {
         this.course = course;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public int getAge() {

@@ -1,11 +1,10 @@
-package com.example.StudentProject.Controller;
+package com.example.StudentProject.controller;
 
-import com.example.StudentProject.DTO.StudentCreateRequestDto;
-import com.example.StudentProject.DTO.StudentCreateResponseDto;
-import com.example.StudentProject.DTO.StudentUpdateRequestDto;
-import com.example.StudentProject.DTO.StudentUpdateResponseDto;
-import com.example.StudentProject.Entity.Student;
-import com.example.StudentProject.Service.StudentService;
+import com.example.StudentProject.dto.StudentCreateRequestDto;
+import com.example.StudentProject.dto.StudentCreateResponseDto;
+import com.example.StudentProject.dto.StudentUpdateRequestDto;
+import com.example.StudentProject.dto.StudentUpdateResponseDto;
+import com.example.StudentProject.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

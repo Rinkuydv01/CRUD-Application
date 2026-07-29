@@ -1,16 +1,24 @@
-package com.example.StudentProject.DTO;
+package com.example.StudentProject.dto;
 
 import java.time.LocalDateTime;
 
-public class StudentUpdateResponseDto {
+public class StudentCreateResponseDto {
     private Long id;
     private String name;
     private String email;
-    private int age;
     private int rollNo;
     private String course;
+    private int age;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public Long getId() {
         return id;
@@ -34,14 +42,6 @@ public class StudentUpdateResponseDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getRollNo() {
@@ -68,11 +68,11 @@ public class StudentUpdateResponseDto {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public int getAge() {
+        return age;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setAge(int age) {
+        this.age = age;
     }
 }

@@ -1,18 +1,17 @@
-package com.example.StudentProject.Service;
+package com.example.StudentProject.service;
 
-import com.example.StudentProject.DTO.StudentCreateRequestDto;
-import com.example.StudentProject.DTO.StudentCreateResponseDto;
-import com.example.StudentProject.DTO.StudentUpdateRequestDto;
-import com.example.StudentProject.DTO.StudentUpdateResponseDto;
-import com.example.StudentProject.Entity.Student;
-import com.example.StudentProject.Repository.StudentRepository;
+import com.example.StudentProject.dto.StudentCreateRequestDto;
+import com.example.StudentProject.dto.StudentCreateResponseDto;
+import com.example.StudentProject.dto.StudentUpdateRequestDto;
+import com.example.StudentProject.dto.StudentUpdateResponseDto;
+import com.example.StudentProject.entity.Student;
+import com.example.StudentProject.repository.StudentRepository;
 import com.example.StudentProject.exception.DuplicateResourceException;
 import com.example.StudentProject.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentService {

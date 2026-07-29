@@ -1,4 +1,4 @@
-package com.example.StudentProject.DTO;
+package com.example.StudentProject.dto;
 
 
 import jakarta.validation.constraints.*;
